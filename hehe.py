@@ -77,7 +77,7 @@ def readLines(fileName):
     return open(fileName).readlines()
 
 def makeRequests(_HOST, _PORT, _USERAGENTS, _PROXIES, _PATH):
-    for hehe in range(1,300):
+    for hehe in range(1,10000):
         _PROXY = random.choice(_PROXIES)
         _USERAGENT = random.choice(_USERAGENTS)
         a22=['GET ','HEAD ','POST ']
