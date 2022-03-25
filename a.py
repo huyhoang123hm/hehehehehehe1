@@ -1,5 +1,5 @@
 import requests
-check='5'
+check='4'
 if check=='5':
     a=''
     a=a+requests.get(url='https://gist.githubusercontent.com/Azuures/1e0cb7a1097c720b4ed2aa63acd82179/raw/97d2d6a11873ffa8ca763763f7a5dd4035bcf95f/fwefnwex').text.strip()+'\n'
